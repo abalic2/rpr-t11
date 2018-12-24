@@ -114,8 +114,6 @@ public class GeografijaDAO {
                 nadjenaDrzava.setId(idDrzave);
                 nadjenaDrzava.setNaziv(nazivDrzave);
 
-                /*grad.setDrzava(nadjenaDrzava);
-                nadjenaDrzava.setGlavniGrad(grad);*/
             }
             if (imaDrzave) {
                 return grad;
@@ -227,7 +225,7 @@ public class GeografijaDAO {
                 imaDrzave = true;
             }
 
-            upit = conn.prepareStatement("SELECT id FROM grad ORDER BY id DESC"); //limit 1
+            upit = conn.prepareStatement("SELECT id FROM grad ORDER BY id DESC");
             result = upit.executeQuery();
             int idGrada = 0;
             while (result.next()) {
@@ -248,7 +246,7 @@ public class GeografijaDAO {
 
 
             if (!imaDrzave) {
-                upit = conn.prepareStatement("SELECT id FROM drzava ORDER BY id DESC"); //limit 1
+                upit = conn.prepareStatement("SELECT id FROM drzava ORDER BY id DESC");
                 result = upit.executeQuery();
                 idDrzave = 0;
                 while (result.next()) {
@@ -279,7 +277,7 @@ public class GeografijaDAO {
                 idGrada = result.getInt(1);
                 imaGlGrada = true;
             }
-            upit = conn.prepareStatement("SELECT id FROM drzava ORDER BY id DESC"); //limit 1
+            upit = conn.prepareStatement("SELECT id FROM drzava ORDER BY id DESC");
             result = upit.executeQuery();
             int idDrzave = 0;
             while (result.next()) {
@@ -299,7 +297,7 @@ public class GeografijaDAO {
 
             if (!imaGlGrada) {
                 //Dodaj novi grad
-                upit = conn.prepareStatement("SELECT id FROM grad ORDER BY id DESC"); //limit 1
+                upit = conn.prepareStatement("SELECT id FROM grad ORDER BY id DESC");
                 result = upit.executeQuery();
                 idGrada = 0;
                 while (result.next()) {
