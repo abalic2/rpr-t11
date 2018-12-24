@@ -9,8 +9,13 @@ public class Main {
     static String ispisiGradove() {
         ArrayList<Grad> gradovi = geo.gradovi();
         String s = "";
-        for (Grad grad : gradovi)
-            s += grad.toString();
+        if(gradovi != null) {
+            for (Grad grad : gradovi)
+                s += grad.toString();
+        }
+        else {
+            System.out.println("Nema gradova u bazi!");
+        }
         return s;
     }
 

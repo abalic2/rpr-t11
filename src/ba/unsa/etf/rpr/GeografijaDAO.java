@@ -15,9 +15,9 @@ public class GeografijaDAO {
         instance = new GeografijaDAO();
     }
 
-    public static GeografijaDAO getInstance() {
-        initialize();
-        return instance;
+    public static GeografijaDAO getInstance() { // nije ovdje
+            if (instance == null) initialize();
+            return instance;
     }
 
     private void ubaciUListe() {
@@ -47,12 +47,13 @@ public class GeografijaDAO {
     private GeografijaDAO() {
         File db = new File("baza.db");
         try {
-            conn = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            //Class.forName("oracle.jdbc.driver.OracleDriver");
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@ora.db.lab.ri.etf.unsa.ba:1521:ETFLAB","AB18051","pwMKrItC");
             //ima li tabela
 
-            upit = conn.prepareStatement("CREATE TABLE IF NOT EXISTS grad (id integer primary key, naziv text, broj_stanovnika int, drzava integer references drzava)");
+            upit = conn.prepareStatement("CREATE TABLE grad (id integer primary key, naziv varchar(250), broj_stanovnika integer, drzava integer references drzava)");
             upit.executeUpdate();
-            upit = conn.prepareStatement("CREATE TABLE IF NOT EXISTS drzava (id integer primary key, naziv text, glavni_grad integer references grad)");
+            upit = conn.prepareStatement("CREATE TABLE drzava (id integer primary key, naziv varchar(250), glavni_grad integer references grad)");
             upit.executeUpdate();
             ubaciUListe();
             upit = conn.prepareStatement("DELETE FROM grad");
@@ -83,7 +84,9 @@ public class GeografijaDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }/*catch (ClassNotFoundException e) {
+           e.printStackTrace();
+        }*/
 
     }
 
