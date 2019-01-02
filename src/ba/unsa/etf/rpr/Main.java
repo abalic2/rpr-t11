@@ -1,25 +1,32 @@
 package ba.unsa.etf.rpr;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static GeografijaDAO geo = GeografijaDAO.getInstance();
 
     static String ispisiGradove() {
+        GeografijaDAO.removeInstance();
+        File dbfile = new File("baza.db");
+        dbfile.delete();
+        GeografijaDAO geo = GeografijaDAO.getInstance();
         ArrayList<Grad> gradovi = geo.gradovi();
         String s = "";
-        if(gradovi != null) {
+        if (gradovi != null) {
             for (Grad grad : gradovi)
                 s += grad.toString();
-        }
-        else {
+        } else {
             System.out.println("Nema gradova u bazi!");
         }
         return s;
     }
 
     static void glavniGrad() {
+        GeografijaDAO.removeInstance();
+        File dbfile = new File("baza.db");
+        dbfile.delete();
+        GeografijaDAO geo = GeografijaDAO.getInstance();
         Scanner ulaz = new Scanner(System.in);
         String drzava = ulaz.nextLine();
         Grad grad = geo.glavniGrad(drzava);
