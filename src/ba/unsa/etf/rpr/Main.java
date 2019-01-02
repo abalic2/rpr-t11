@@ -1,10 +1,18 @@
 package ba.unsa.etf.rpr;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+public class Main extends Application {
 
     static String ispisiGradove() {
         GeografijaDAO.removeInstance();
@@ -36,23 +44,17 @@ public class Main {
             System.out.println("Nepostojeća država");
     }
 
-    public static void main(String[] args) {
-        petlja:
-        for (; ; ) {
-            System.out.println("Odaberite: \n --1 za ispisivanje glavnog grada unesene drzave \n --" +
-                    "2 za ispisivanje svih gradova u bazi podataka \n --3 za kraj");
-            Scanner ulaz = new Scanner(System.in);
-            int izbor = ulaz.nextInt();
-            switch (izbor) {
-                case 1:
-                    glavniGrad();
-                    break;
-                case 2:
-                    System.out.println(ispisiGradove());
-                    break;
-                case 3:
-                    break petlja;
-            }
-        }
+    public static void main(String[] args){
+        launch(args);
     }
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
+        loader.setController(new GuiController());
+        Parent root = loader.load();
+        primaryStage.setTitle("Gradovi i drzave");
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        primaryStage.show();
+    }
+
 }
