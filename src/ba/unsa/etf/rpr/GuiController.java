@@ -6,9 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -159,6 +161,17 @@ public class GuiController {
             System.out.println(e.getMessage());
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void spasi(ActionEvent actionEvent) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("PDF", "*.pdf"),
+                new FileChooser.ExtensionFilter("DOCX", "*.docx"),
+                new FileChooser.ExtensionFilter("XSLX", "*.xslx"));
+        File file = fileChooser.showSaveDialog(new Stage());
+        if (file != null) {
+            new GradoviReport().saveAs(GeografijaDAO.getConnection(), file.getAbsolutePath());
         }
     }
 

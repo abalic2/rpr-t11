@@ -37,7 +37,10 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="%file" />
+          <Menu mnemonicParsing="false" text="%file">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#spasi" text="%spasi" />
+               </items></Menu>
           <Menu mnemonicParsing="false" text="%view">
                <items>
                   <Menu mnemonicParsing="false" text="%jezik">
