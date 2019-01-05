@@ -11,6 +11,10 @@ public class GeografijaDAO {
     private int brojDrzava = 0; //redni broj drzave = njen id
     private int brojGradova = 0;
 
+    public static Connection getConnection() {
+        return conn;
+    }
+
     private static void initialize() {
         instance = new GeografijaDAO();
     }

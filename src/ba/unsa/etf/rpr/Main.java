@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
@@ -49,7 +51,9 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"));
+        Locale.setDefault(new Locale("bs", "BA"));
+        ResourceBundle bundle = ResourceBundle.getBundle("Translation");
+        FXMLLoader loader = new FXMLLoader( getClass().getResource("gui.fxml" ), bundle);
         loader.setController(new GuiController());
         Parent root = loader.load();
         primaryStage.setTitle("Gradovi i drzave");
