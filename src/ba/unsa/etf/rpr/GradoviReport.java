@@ -51,6 +51,7 @@ public class GradoviReport extends JFrame {
             ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
             list.add(parameters);
             JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+
             File file = new File(format);
             OutputStream izlaz = new FileOutputStream(file);
             if (format.contains(".pdf")) {
