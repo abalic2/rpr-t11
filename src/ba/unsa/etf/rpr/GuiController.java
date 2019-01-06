@@ -21,6 +21,7 @@ public class GuiController {
     private GeografijaDAO geo = GeografijaDAO.getInstance();
     public TextField drzavaZaBrisanje;
     public TextField drzavaZaTrazenje;
+    public TextField drzavaZaIzvjestaj;
 
     public void bosanski(ActionEvent actionEvent) {
         Locale.setDefault(new Locale("bs", "BA"));
@@ -157,6 +158,21 @@ public class GuiController {
     public void stampajGradove(ActionEvent actionEvent) {
         try {
             new GradoviReport().showReport(GeografijaDAO.getInstance().getConnection());
+        } catch (JRException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void stampajNekeGradove(ActionEvent actionEvent) {
+        Drzava d = geo.nadjiDrzavu(drzavaZaIzvjestaj.getText());
+        try {
+            if (d == null) { //nema drzave - alert
+                prikaziAlertDaNemaDrzave();
+            } else {
+                new GradoviReport().showReportNovi(GeografijaDAO.getInstance().getConnection(),drzavaZaIzvjestaj.getText());
+            }
         } catch (JRException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
