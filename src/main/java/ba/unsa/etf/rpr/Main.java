@@ -53,7 +53,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Locale.setDefault(new Locale("bs", "BA"));
         ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        FXMLLoader loader = new FXMLLoader( getClass().getResource("gui.fxml" ), bundle);
+        FXMLLoader loader = new FXMLLoader( getClass().getResource("/gui.fxml" ), bundle);
         loader.setController(new GuiController());
         Parent root = loader.load();
         primaryStage.setTitle("Gradovi i drzave");

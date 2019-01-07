@@ -27,7 +27,7 @@ public class GuiController {
         Locale.setDefault(new Locale("bs", "BA"));
         Stage myStage = (Stage) drzavaZaBrisanje.getScene().getWindow();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation_bs");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"), bundle);
         loader.setController(new GuiController());
         Parent root = null;
         try {
@@ -43,7 +43,7 @@ public class GuiController {
         Locale.setDefault(new Locale("de", "DE"));
         Stage myStage = (Stage) drzavaZaBrisanje.getScene().getWindow();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation_de");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"), bundle);
         loader.setController(new GuiController());
         Parent root = null;
         try {
@@ -59,7 +59,7 @@ public class GuiController {
         Locale.setDefault(new Locale("en", "US"));
         Stage myStage = (Stage) drzavaZaBrisanje.getScene().getWindow();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation_en_US");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"), bundle);
         loader.setController(new GuiController());
         Parent root = null;
         try {
@@ -75,7 +75,7 @@ public class GuiController {
         Locale.setDefault(new Locale("fr", "FR"));
         Stage myStage = (Stage) drzavaZaBrisanje.getScene().getWindow();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation_fr");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gui.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui.fxml"), bundle);
         loader.setController(new GuiController());
         Parent root = null;
         try {
@@ -91,7 +91,7 @@ public class GuiController {
     public void prikaziGradove(ActionEvent actionEvent) {
         Stage myStage = new Stage();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("gradovi.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gradovi.fxml"), bundle);
         loader.setController(new GradoviController());
         Parent root = null;
         try {
@@ -134,7 +134,7 @@ public class GuiController {
     public void mijenjajGrad(ActionEvent actionEvent) {
         Stage myStage = new Stage();
         ResourceBundle bundle = ResourceBundle.getBundle("Translation");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("grad.fxml"), bundle);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/grad.fxml"), bundle);
         loader.setController(new GradController());
         Parent root = null;
         try {
